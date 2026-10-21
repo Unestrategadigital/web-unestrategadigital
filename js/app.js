@@ -88,8 +88,8 @@ const PRODUCTS = [
   {id:"c1",tipo:"curso",titulo:"Meta Ads avanzado",desc:"Estructura de cuenta, API de conversiones, pruebas de creativos y cómo escalar sin que se dispare el costo por venta.",precio:67,dur:"3 h",nivel:"Avanzado",lecciones:["Estructura de cuenta que escala","Píxel y API de conversiones bien configurados","Pruebas de creativos: qué medir y cuándo cortar","Leer el embudo: gancho, retención, clic y venta","Retargeting por etapas","Escalar sin romper el costo por venta"]},
   {id:"c2",tipo:"curso",titulo:"Guiones que venden en 30 segundos",desc:"Ganchos, estructura y cierre para reels y TikToks que convierten.",precio:27,dur:"90 min",nivel:"Principiante",lecciones:["El gancho de 3 segundos","Estructura problema, solución y prueba","Llamados a la acción","20 plantillas listas"]},
   {id:"c3",tipo:"curso",titulo:"Avatares de IA para contenido",desc:"Crea un avatar, su voz y tus primeros videos sin grabarte.",precio:47,dur:"3 h",nivel:"Intermedio",lecciones:["Herramientas y costos","Crear tu avatar","Voz y guion","Formato podcast dual","Publicar y medir"]},
-  {id:"c5",tipo:"curso",titulo:"Crea aplicaciones con IA en un día",desc:"En un solo día aprendes a construir landings, tiendas y apps con IA sin saber programar, listas para venderlas a negocios y empresas.",precio:47,dur:"1 día",nivel:"Principiante",lecciones:["Qué puedes construir y con qué herramientas","Cómo pedirle una app a la IA para que salga bien","Tu primera landing con formulario y WhatsApp","Pagos con tarjeta y Binance","Publicarla con tu dominio","Mejorarla con lo que te piden tus clientes"],
-    porque:"Sales el mismo día con tu primera landing funcionando y una habilidad que las empresas pagan."},
+  {id:"c5",tipo:"curso",titulo:"Crea aplicaciones con IA en un día",desc:"En un solo día aprendes a construir apps con IA sin saber programar, listas para venderlas a negocios y empresas.",precio:47,dur:"1 día",nivel:"Principiante",lecciones:["Qué apps puedes construir y con qué herramientas","Cómo pedirle una app a la IA para que salga bien","Tu primera app con usuarios y datos","Cobros dentro de la app","Publicarla y entregarla a tu cliente","Mejorarla con lo que te piden tus clientes"],
+    porque:"Sales el mismo día con tu primera app funcionando y una habilidad que las empresas pagan."},
   {id:"c4",tipo:"curso",titulo:"Copywriting para anuncios",desc:"Textos que hacen clic: fórmulas, pruebas y ejemplos reales.",precio:27,dur:"75 min",nivel:"Principiante",lecciones:["Fórmulas AIDA y PAS","Titulares","Pruebas de copy"]},
   {id:"p1",tipo:"programa",titulo:"Programa Estratega Digital",desc:"Marca, contenido, anuncios y ventas en 8 semanas, con mentorías en vivo para que salgas con tu sistema funcionando.",precio:297,dur:"8 semanas",nivel:"Completo",lecciones:["Semana 1: Posicionamiento","Semana 2: Oferta irresistible","Semana 3: Sistema de contenido","Semana 4: Avatar de IA","Semana 5: Meta Ads","Semana 6: Embudo y WhatsApp","Semana 7: Escalar","Semana 8: Vender servicios"]},
   {id:"p2",tipo:"programa",titulo:"Agencia de Contenido con IA",desc:"Monta, empaqueta y vende servicios de contenido con IA en 6 semanas.",precio:197,dur:"6 semanas",nivel:"Intermedio",lecciones:["Nicho y oferta","Herramientas","Producción en lote","Precios y propuestas","Conseguir clientes","Entrega y retención"]},
@@ -106,20 +106,20 @@ const PRODUCTS = [
 const TIPO_LABEL = {curso:"Curso corto",programa:"Programa",ebook:"Ebook",kit:"Kit de IA",herramienta:"Herramienta"};
 /* Página de cada producto: gancho, dolores, antes/después, módulos con resultado, para quién y preguntas propias */
 const PAG = {
-  c5:{gancho:"Aprende a construir páginas y apps con IA, y véndelas a negocios.",
-    dolores:["Quieres generar ingresos con algo que las empresas paguen de verdad.","Ves que todos los negocios necesitan una página y no sabes cómo ofrecérsela.","Aprender a programar te tomaría años.","Probaste la IA, pero te dio código que no sabes dónde poner."],
-    puente:"Las empresas pagan por páginas y apps. Con IA, tú puedes hacerlas en un día.",
-    antes:[["Aprender a programar te tomaría años.","Construyes con IA desde el primer día."],["Una página te toma semanas.","Entregas una landing en un día."],["No tienes nada que mostrarle a un cliente.","Sales con tu primer proyecto para tu portafolio."]],
-    mods:[["Qué puedes construir y con qué herramientas","Landing, tienda, reservas o una app interna: lo que más piden los negocios y las herramientas justas para hacerlo.","Sabes qué ofrecer antes de tocar nada."],
-      ["Cómo pedirle una app a la IA para que salga bien","La forma de describir lo que quieres para que la IA lo construya completo y no a pedazos.","Tu primer pedido sale funcionando."],
-      ["Tu primera landing con formulario y WhatsApp","Construyes una página que capta datos y manda a la gente directo a tu WhatsApp.","Tienes tu primera página lista para mostrar."],
-      ["Pagos con tarjeta y Binance","Conectas cobros para vender sin pasar por transferencias manuales.","Cobras desde tu propia página."],
-      ["Publicarla con tu dominio","Subes la página a internet con el dominio de la marca.","Sabes entregar una página en línea, con su dominio."],
+  c5:{gancho:"Aprende a construir apps con IA y véndelas a negocios.",
+    dolores:["Quieres generar ingresos con algo que las empresas paguen de verdad.","Ves negocios que llevan todo en papel o en Excel y sabes que una app se lo resolvería.","Aprender a programar te tomaría años.","Probaste la IA, pero te dio código que no sabes dónde poner."],
+    puente:"Las empresas pagan por apps que les ahorran trabajo. Con IA, tú puedes hacerlas en un día.",
+    antes:[["Aprender a programar te tomaría años.","Construyes apps con IA desde el primer día."],["Una app te tomaría meses.","Entregas tu primera app en un día."],["No tienes nada que mostrarle a un cliente.","Sales con tu primera app para tu portafolio."]],
+    mods:[["Qué apps puedes construir y con qué herramientas","Reservas, inventario, cotizaciones, citas o atención al cliente: las apps que más piden los negocios y las herramientas justas para hacerlas.","Sabes qué app ofrecer antes de tocar nada."],
+      ["Cómo pedirle una app a la IA para que salga bien","La forma de describir lo que quieres para que la IA lo construya completo y no a pedazos.","Tu primera app sale funcionando."],
+      ["Tu primera app con usuarios y datos","Construyes una app que guarda información, tiene usuarios y funciona en celular y computador.","Tienes tu primera app lista para mostrar."],
+      ["Cobros dentro de la app","Conectas pagos con tarjeta y Binance para que la app cobre sola.","Sabes armar apps que venden."],
+      ["Publicarla y entregarla a tu cliente","La subes a internet y se la entregas a tu cliente con su propio enlace.","Sabes entregar una app funcionando."],
       ["Mejorarla con lo que te piden tus clientes","Cómo hacer cambios rápidos cada vez que tu cliente los pida.","Puedes mantenerla y cobrar por cada mejora."]],
-    para:["Eres joven y quieres una habilidad que las empresas paguen.","Eres freelancer y quieres sumar páginas y apps a tus servicios.","Estudias diseño, marketing o sistemas y quieres cobrar por proyectos."],
+    para:["Eres joven y quieres una habilidad que las empresas paguen.","Eres freelancer y quieres sumar apps a tus servicios.","Estudias diseño, marketing o sistemas y quieres cobrar por proyectos."],
     sin:["Saber programar","Haber usado IA antes","Estudiar una carrera de sistemas","Instalar programas complicados"],
     prueba:true,
-    faq:[["¿De verdad en un día?","Las lecciones se ven en una tarde y tu landing sale ese mismo día. Los pagos y el dominio pueden tardar más si tu banco o tu proveedor demoran en aprobarlos."],["¿Qué herramientas vamos a usar?","Las vemos en la primera lección, junto con lo que cuesta cada una."]]},
+    faq:[["¿De verdad en un día?","Las lecciones se ven en una tarde y tu primera app sale ese mismo día. Los cobros y la publicación pueden tardar más si tu banco o tu proveedor demoran en aprobarlos."],["¿Qué herramientas vamos a usar?","Las vemos en la primera lección, junto con lo que cuesta cada una."]]},
   c1:{gancho:"Si escalas y el costo por venta se dispara, el problema está en la estructura.",
     dolores:["Subes el presupuesto y la campaña se rompe.","No sabes si falló el creativo o falló la segmentación.","El píxel reporta ventas que no cuadran con tu caja.","Apagas anuncios por intuición, no por datos."],
     puente:"Más presupuesto no arregla una cuenta mal armada. La multiplica.",
@@ -735,10 +735,10 @@ function viewProduct(id){
   </div></section>
   ${g.prueba?`<section class="band proof"><div class="wrap proof-grid">
     <div class="stack" style="gap:16px;max-width:48ch">
-      ${h2('Esta página <span class="red">la hice así</span>')}
-      <p class="lede muted">Las animaciones, los pagos y el área de estudiantes que estás viendo los construí con IA, con el mismo método que te enseño en este curso. Es el tipo de proyecto que puedes venderle a un negocio.</p>
+      ${h2('Esta plataforma <span class="red">la hice con IA</span>')}
+      <p class="lede muted">El área de estudiantes, los pagos y el analizador de Meta Ads que tienes aquí funcionan como una app, y los construí con el mismo método que te enseño en este curso. Es el tipo de proyecto que puedes venderle a un negocio.</p>
     </div>
-    <ul class="proof-list">${["Landing con formulario y WhatsApp","Pagos con tarjeta y Binance","Se ve bien en celular y computador","Lista para entregar a un cliente"].map(x=>`<li>${x}</li>`).join("")}</ul>
+    <ul class="proof-list">${["Usuarios y área privada","Cobros con tarjeta y Binance","Funciona en celular y computador","Lista para entregar a un cliente"].map(x=>`<li>${x}</li>`).join("")}</ul>
   </div></section>`:""}
   ${g.para?`<section class="band ${g.prueba?"alt":""}"><div class="wrap split" style="align-items:start">
     <div class="stack" style="gap:20px">${h2('Es para ti <span class="red">si…</span>')}
