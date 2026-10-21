@@ -85,7 +85,7 @@ const SERVICES = {
 };
 
 const PRODUCTS = [
-  {id:"c1",tipo:"curso",titulo:"Meta Ads avanzado",desc:"Estructura de cuenta, API de conversiones, pruebas de creativos y cómo escalar sin que se dispare el costo por venta.",precio:12,dur:"3 h",nivel:"Avanzado",lecciones:["Estructura de cuenta que escala","Píxel y API de conversiones bien configurados","Pruebas de creativos: qué medir y cuándo cortar","Leer el embudo: gancho, retención, clic y venta","Retargeting por etapas","Escalar sin romper el costo por venta"]},
+  {id:"c1",tipo:"curso",titulo:"Meta Ads avanzado",desc:"Estructura de cuenta, API de conversiones, pruebas de creativos y cómo escalar sin que se dispare el costo por venta.",precio:12,dur:"3 h",nivel:"Avanzado",lecciones:["Estructura de cuenta que escala","Píxel y API de conversiones bien configurados","Pruebas de creativos: qué medir y cuándo cortar","Leer el embudo: gancho, retención, clic y venta","Retargeting por etapas","Sistema ADP: anuncios que siguen vendiendo meses","Escalar sin romper el costo por venta"]},
   {id:"c2",tipo:"curso",titulo:"Guiones que venden en 30 segundos",desc:"Ganchos, estructura y cierre para reels y TikToks que convierten.",precio:10,dur:"90 min",nivel:"Principiante",lecciones:["El gancho de 3 segundos","Estructura problema, solución y prueba","Llamados a la acción","20 plantillas listas"]},
   {id:"c3",tipo:"curso",titulo:"Avatares de IA para contenido",desc:"Crea un avatar, su voz y tus primeros videos sin grabarte.",precio:12,dur:"3 h",nivel:"Intermedio",lecciones:["Herramientas y costos","Crear tu avatar","Voz y guion","Formato podcast dual","Publicar y medir"]},
   {id:"c5",tipo:"curso",titulo:"Crea aplicaciones con IA en un día",desc:"En un solo día aprendes a construir apps con IA sin saber programar, listas para venderlas a negocios y empresas.",precio:12,dur:"1 día",nivel:"Principiante",lecciones:["Qué apps puedes construir y con qué herramientas","Cómo pedirle una app a la IA para que salga bien","Tu primera app con usuarios y datos","Cobros dentro de la app","Publicarla y entregarla a tu cliente","Mejorarla con lo que te piden tus clientes"],
@@ -125,7 +125,8 @@ const PAG = {
     puente:"Más presupuesto no arregla una cuenta mal armada. La multiplica.",
     antes:[["Pruebas al azar y apagas por intuición.","Mides gancho, retención, clic y venta, y cortas con criterio."],["Escalar te sube el costo por venta.","Escalas por etapas sin romper lo que funciona."],["El píxel pierde conversiones.","Píxel y API de conversiones bien conectados."]],
     para:["Ya pautas en Meta y quieres pasar de probar a escalar.","Manejas cuentas de clientes y necesitas un método repetible.","Vendes online y tu costo por venta no baja."],
-    req:["Haber lanzado campañas antes","Acceso a tu Business Manager"]},
+    req:["Haber lanzado campañas antes","Acceso a tu Business Manager"],
+    faq:[["¿Incluye el Sistema ADP?","Sí. Es una de las lecciones del curso: cómo convertir tus mejores piezas en anuncios que siguen vendiendo meses."]]},
   c2:{gancho:"Tienes 3 segundos. Casi todos los gastan diciendo hola.",
     dolores:["Publicas y los videos se quedan en 200 vistas.","Te sientas a grabar y no sabes cómo empezar.","Tus videos gustan, pero nadie compra.","Copias tendencias que no tienen nada que ver con lo que vendes."],
     puente:"No te falta carisma. Te falta estructura.",
@@ -186,7 +187,8 @@ const PAG = {
     puente:"Si tu contenido caduca en un día, trabajas para el algoritmo. Con ADP, tu contenido trabaja para ti.",
     antes:[["Cada post muere en 24 horas.","Cada pieza se vuelve un activo que dura meses."],["Pautas al azar.","Pruebas con pauta moderada y escalas lo que gana."],["Produces sin parar.","Reciclas y acumulas activos."]],
     dentro:["Crear cada pieza con intención publicitaria","Publicar orgánico y probar con pauta moderada","Escalar las ganadoras como anuncios permanentes","Reciclar cada 30 a 90 días","Sumar de 5 a 10 activos trabajando a la vez"],
-    para:["Creas contenido y sientes que no rinde.","Pautas y quieres anuncios que duren.","Tienes poco tiempo para producir."]},
+    para:["Creas contenido y sientes que no rinde.","Pautas y quieres anuncios que duren.","Tienes poco tiempo para producir."],
+    faq:[["¿Lo veo también en Meta Ads avanzado?","Sí, el curso lo incluye como una de sus lecciones. El ebook te lo deja por escrito para consultarlo cuando lo necesites."]]},
   e6:{gancho:"Antes de cualquier campaña: qué vendes, a quién y por qué le importa.",
     dolores:["Lanzas campañas y no sabes por qué no funcionan.","Tu marca dice lo mismo que todas."],
     puente:"Sin base, cada campaña empieza de cero.",
@@ -1192,5 +1194,3 @@ $("#menuBtn").addEventListener("click",()=>{const n=$("#mainNav");n.classList.to
 addEventListener("hashchange",()=>route());
 $("#yr").textContent=new Date().getFullYear();
 $("#footContact").textContent="WhatsApp "+CONFIG.contacto.whatsapp;
-grain(); cursor(); initLenis();
-route(false);
