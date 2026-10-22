@@ -37,7 +37,7 @@ const CONFIG = {
   analizador: { precio: 3 },
   // Productos que ve el estudiante en la demostración del área de estudiantes
   estudiantes: { demo: ["c5","c1","e1","e5"] },
-  // Descuento del combo según cuántos productos lleva (2, 3, 4 o más) [confirmar con Leo]
+  // Descuento del combo según cuántos productos lleva (2, 3, 4 o más)
   combos: { descuentos: { 2:10, 3:15, 4:20 } },
   // Calificaciones reales de cada producto: { e1:[{nombre:"Ana", estrellas:5, texto:"..."}] }. Vacío = "Aún sin calificaciones".
   calificaciones: {}
