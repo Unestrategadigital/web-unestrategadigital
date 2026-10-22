@@ -13,7 +13,7 @@ assets/           Imágenes y videos
 
 El contenido editable está al inicio de `js/app.js`:
 
-- `CONFIG`: WhatsApp, pagos (Binance Pay, enlace de tarjeta), enlaces de plataformas y skills.
+- `CONFIG`: WhatsApp, pagos (Binance Pay, enlace de tarjeta), enlaces de plataformas y skills, descuentos de combos (`combos`), calificaciones reales de cada producto (`calificaciones`) y productos de la demostración del área de estudiantes (`estudiantes`).
 - `SERVICES`: servicios y paquetes.
 - `PRODUCTS`: cursos, programas, ebooks y kits.
 - `PAG`: textos de la página de cada producto.
