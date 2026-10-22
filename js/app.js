@@ -11,6 +11,7 @@ const CONFIG = {
   // Biblioteca de skills: instrucciones listas para cargar en tu IA. url vacía = "Próximamente". precio "" = gratis para estudiantes.
   skills: [
     // Módulos de Kael, mi asistente de marketing, listos para cargar por separado
+    { nombre:"Trafficker digital", tipo:"Meta Ads", texto:"Decide qué anuncios hacer y en qué orden, lee hook rate, retención, CTR y conversión para iterar, y aplica el Sistema ADP para que tus mejores piezas sigan vendiendo meses.", porque:"Incluye el Sistema ADP completo.", precio:"", url:"" },
     { nombre:"Anuncios que venden", tipo:"Video UGC", texto:"Le das tu producto y te devuelve dolores, objeciones, 10 ángulos y los guiones clip por clip, listos para grabar o para avatar.", precio:"", url:"" },
     { nombre:"Creador de personajes IA", tipo:"Avatar IA", texto:"Diseña un avatar realista y consistente: ficha de identidad, foto base y láminas para que su cara no cambie entre videos.", precio:"", url:"" },
     { nombre:"Ganchos y copy por canal", tipo:"Copy", texto:"Ganchos en matriz y textos para Meta, Google, TikTok y LinkedIn, respetando los caracteres de cada plataforma.", precio:"", url:"" },
@@ -98,7 +99,7 @@ const PRODUCTS = [
   {id:"k1",tipo:"kit",titulo:"Cerebro de Marketing IA",desc:"Mis asistentes de IA listos para copiar: Marketing Brain, copywriter, diseñador y director de contenido en formatos de video.",precio:10,dur:"5 asistentes",nivel:"Prompts"},
   {id:"e3",tipo:"ebook",titulo:"Marketing 47 en 1",desc:"Los 47 pensadores más importantes del marketing y la persuasión, reunidos en una sola conversación donde debaten sus ideas.",precio:5,dur:"Preventa",nivel:"PDF",pronto:true},
   {id:"e4",tipo:"ebook",titulo:"Vender es manipular",desc:"Sí, y te lo demuestro: entender al ser humano, su naturaleza y la comunicación, sin fórmulas de gurú.",precio:3,dur:"Preventa",nivel:"PDF",pronto:true},
-  {id:"e5",tipo:"ebook",titulo:"Sistema ADP",desc:"Activos Digitales Persistentes: contenido que sigue trayendo clientes meses después, en vez de morir en 24 horas.",precio:5,dur:"Preventa",nivel:"PDF",pronto:true,
+  {id:"e5",tipo:"ebook",titulo:"Sistema ADP",desc:"Activos Digitales Persistentes: contenido que sigue trayendo clientes meses después, en vez de morir en 24 horas.",precio:5,dur:"Lectura corta",nivel:"PDF",pronto:true,
     porque:"Un sistema de pauta evergreen: contenido que sigue atrayendo clientes mientras tú haces otra cosa."},
   {id:"e6",tipo:"ebook",titulo:"El maldito branding",desc:"Qué vendes, a quién y por qué importa: la base que va antes de cualquier campaña.",precio:3,dur:"Preventa",nivel:"PDF",pronto:true},
   {id:"e7",tipo:"ebook",titulo:"Ser autosuficiente",desc:"Cómo vivir de tus habilidades: elegir una, volverte bueno y convertirla en ingresos.",precio:3,dur:"Preventa",nivel:"PDF",pronto:true}
@@ -188,7 +189,8 @@ const PAG = {
     antes:[["Cada post muere en 24 horas.","Cada pieza se vuelve un activo que dura meses."],["Pautas al azar.","Pruebas con pauta moderada y escalas lo que gana."],["Produces sin parar.","Reciclas y acumulas activos."]],
     dentro:["Crear cada pieza con intención publicitaria","Publicar orgánico y probar con pauta moderada","Escalar las ganadoras como anuncios permanentes","Reciclar cada 30 a 90 días","Sumar de 5 a 10 activos trabajando a la vez"],
     para:["Creas contenido y sientes que no rinde.","Pautas y quieres anuncios que duren.","Tienes poco tiempo para producir."],
-    faq:[["¿Lo veo también en Meta Ads avanzado?","Sí, el curso lo incluye como una de sus lecciones. El ebook te lo deja por escrito para consultarlo cuando lo necesites."]]},
+    faq:[["¿Lo veo también en Meta Ads avanzado?","Sí, el curso lo incluye como una de sus lecciones. El ebook te lo deja por escrito para consultarlo cuando lo necesites."],
+      ["¿También existe como skill?",`Sí. El método va dentro de la skill Trafficker digital, en la <a href="#plataformas">Biblioteca de skills</a>, para que tu IA lo aplique por ti.`]]},
   e6:{gancho:"Antes de cualquier campaña: qué vendes, a quién y por qué le importa.",
     dolores:["Lanzas campañas y no sabes por qué no funcionan.","Tu marca dice lo mismo que todas."],
     puente:"Sin base, cada campaña empieza de cero.",
@@ -452,7 +454,7 @@ function mountHome(){
 // Legendario solo los que Leo indique (por ahora: Sistema ADP y Crea aplicaciones con IA).
 const RAREZA={ e5:"legendario", c5:"legendario", p1:"epico", c1:"epico", p2:"epico", k1:"epico",
   c2:"raro", c3:"raro", e1:"raro", e3:"raro", e4:"raro", c4:"comun", e2:"comun", e6:"comun", e7:"comun",
-  "Anuncios que venden":"epico", "Creador de personajes IA":"epico", "Kit de 7 estáticos":"epico",
+  "Trafficker digital":"epico", "Anuncios que venden":"epico", "Creador de personajes IA":"epico", "Kit de 7 estáticos":"epico",
   "Ganchos y copy por canal":"raro", "Conceptos visuales":"raro", "Texto sin cara de IA":"comun" };
 const RZ_RANK={legendario:3,epico:2,raro:1,comun:0}, RZ_LABEL={legendario:"Legendario",epico:"Épico",raro:"Raro",comun:"Común"};
 const rz=x=>RAREZA[x.id]||RAREZA[x.nombre]||"comun";
@@ -1192,5 +1194,3 @@ document.addEventListener("click",e=>{
 });
 $("#menuBtn").addEventListener("click",()=>{const n=$("#mainNav");n.classList.toggle("open");$("#menuBtn").setAttribute("aria-expanded",n.classList.contains("open"))});
 addEventListener("hashchange",()=>route());
-$("#yr").textContent=new Date().getFullYear();
-$("#footContact").textContent="WhatsApp "+CONFIG.contacto.whatsapp;
