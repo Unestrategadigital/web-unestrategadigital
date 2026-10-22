@@ -34,7 +34,13 @@ const CONFIG = {
   },
   // Videos en bucle detrás de cada capítulo (generados en Google Flow)
   videos: { vendado:"assets/vendado.mp4", hilos:"assets/hilos.mp4", bienvenida:"assets/bienvenida.mp4" },
-  analizador: { precio: 3 }
+  analizador: { precio: 3 },
+  // Productos que ve el estudiante en la demostración del área de estudiantes
+  estudiantes: { demo: ["c5","c1","e1","e5"] },
+  // Descuento del combo según cuántos productos lleva (2, 3, 4 o más) [confirmar con Leo]
+  combos: { descuentos: { 2:10, 3:15, 4:20 } },
+  // Calificaciones reales de cada producto: { e1:[{nombre:"Ana", estrellas:5, texto:"..."}] }. Vacío = "Aún sin calificaciones".
+  calificaciones: {}
 };
 
 const SERVICES = {
@@ -159,11 +165,13 @@ const PAG = {
     para:["Creas contenido con IA y quieres convertirlo en negocio.","Eres freelancer y quieres montar tu agencia.","Tienes una agencia y quieres sumar contenido con IA."],
     sin:["Oficina ni empleados","Experiencia en ventas"]},
   e1:{gancho:"Las fórmulas que uso para escribir anuncios, listas para copiar.",
+    venta:"Escribir un anuncio que vende no depende de la inspiración. Depende de saber qué fórmula usar y en qué momento. Aquí tienes las que uso para escribir mis anuncios, explicadas para que entiendas por qué funcionan, ganchos listos para copiar y el manual para que tu IA deje de escribir como robot. Lo abres, eliges la fórmula y escribes.",
     dolores:["Te quedas en blanco frente a la hoja.","Tus textos suenan a los de todos los demás.","La IA te escribe cosas que nadie diría."],
     puente:"Con la fórmula correcta, escribir deja de depender de la inspiración.",
     dentro:["Fórmulas de copy que convierten y por qué funcionan","Ganchos listos para usar","El manual para que tu IA escriba como un copywriter"],
     para:["Escribes tus propios anuncios y publicaciones.","Quieres que tu IA escriba mejor."]},
   e2:{gancho:"Nadie te enseñó a dirigir. Igual te toca hacerlo.",
+    venta:"A nadie le enseñan a dirigir. Te toca un equipo y terminas copiando al jefe que tuviste, aunque no te gustara. Este ebook te da otra forma de liderar un equipo pequeño, sin plantillas ni estereotipos del jefe tradicional, para que tu gente trabaje contigo y tú dejes de hacer el trabajo de todos.",
     dolores:["Tienes tu primer equipo y nadie te enseñó a dirigirlo.","Copias al jefe que tuviste y no te gusta el resultado.","Terminas haciendo el trabajo de todos."],
     puente:"Dirigir bien no es copiar al jefe que tuviste.",
     dentro:["Cómo dirigir un equipo pequeño sin plantillas","Por qué los estereotipos del jefe tradicional te juegan en contra"],
@@ -174,16 +182,19 @@ const PAG = {
     dentro:["Marketing Brain","Copywriter","Diseñador","Director de contenido en formatos de video"],
     para:["Usas ChatGPT, Claude o Gemini para tu marketing.","Quieres resultados profesionales sin escribir prompts desde cero."]},
   e3:{gancho:"47 pensadores del marketing en una sola conversación.",
+    venta:"Leer a los grandes del marketing te tomaría años, y al final cada uno te diría algo distinto. Aquí los 47 pensadores más importantes del marketing y la persuasión se sientan en la misma conversación y debaten. Ves dónde coinciden, dónde chocan y con qué idea te quedas tú.",
     dolores:["Leíste resúmenes de libros y no recuerdas nada.","Cada autor dice algo distinto y no sabes a quién creerle."],
     puente:"Las ideas se entienden mejor cuando chocan.",
     dentro:["Los 47 pensadores más importantes del marketing y la persuasión","Sus ideas enfrentadas en un mismo debate"],
     para:["Quieres entender el marketing desde sus bases.","Te gusta aprender comparando ideas."]},
   e4:{gancho:"Sí, vender es manipular. Te lo demuestro.",
+    venta:"Si te incomoda vender porque sientes que presionas, este ebook te cambia la pregunta. Toda venta influye en una decisión. La diferencia está en si entiendes a la persona o le recitas un guion. Aquí ves cómo decide el ser humano, qué lo mueve y cómo comunicarte sin fórmulas de gurú.",
     dolores:["Te incomoda vender porque sientes que presionas.","Los cursos de ventas te dan guiones que suenan falsos."],
     puente:"Si entiendes cómo decide una persona, dejas de necesitar guiones.",
     dentro:["Cómo decide el ser humano cuando compra","Naturaleza y comunicación, sin fórmulas de gurú"],
     para:["Vendes y quieres entender por qué la gente compra.","Te cansaron las fórmulas de gurú."]},
   e5:{gancho:"Contenido que sigue vendiendo meses después de publicarlo.",
+    venta:"Casi todos publican a diario y cada pieza muere en 24 horas. El Sistema ADP convierte tu mejor contenido en activos: lo publicas, lo pruebas con poca pauta, escalas lo que gana y lo reciclas para que siga atrayendo clientes durante meses. Es el método que enseño dentro de Meta Ads avanzado, en una lectura corta para aplicarlo esta semana.",
     dolores:["Publicas todos los días y cada post muere en 24 horas.","Pautas cada pieza desde cero.","Tu contenido depende de que tú sigas produciendo."],
     puente:"Si tu contenido caduca en un día, trabajas para el algoritmo. Con ADP, tu contenido trabaja para ti.",
     antes:[["Cada post muere en 24 horas.","Cada pieza se vuelve un activo que dura meses."],["Pautas al azar.","Pruebas con pauta moderada y escalas lo que gana."],["Produces sin parar.","Reciclas y acumulas activos."]],
@@ -192,11 +203,13 @@ const PAG = {
     faq:[["¿Lo veo también en Meta Ads avanzado?","Sí, el curso lo incluye como una de sus lecciones. El ebook te lo deja por escrito para consultarlo cuando lo necesites."],
       ["¿También existe como skill?",`Sí. El método va dentro de la skill Trafficker digital, en la <a href="#plataformas">Biblioteca de skills</a>, para que tu IA lo aplique por ti.`]]},
   e6:{gancho:"Antes de cualquier campaña: qué vendes, a quién y por qué le importa.",
+    venta:"Cuando una campaña no despega, casi nunca es culpa del anuncio. Es que no está claro qué vendes, a quién y por qué debería importarle. Este ebook resuelve esa base para que dejes de gastar en pauta que empieza de cero cada vez.",
     dolores:["Lanzas campañas y no sabes por qué no funcionan.","Tu marca dice lo mismo que todas."],
     puente:"Sin base, cada campaña empieza de cero.",
     dentro:["Qué vendes de verdad","A quién se lo vendes","Por qué le debería importar"],
     para:["Vas a lanzar tu marca.","Tu marketing no despega y sospechas que falta la base."]},
   e7:{gancho:"Vive de lo que sabes hacer.",
+    venta:"Sabes hacer muchas cosas y no cobras por ninguna. Este ebook te ayuda a elegir una habilidad, volverte bueno en ella y convertirla en ingresos, para que dejes de depender de un sueldo que no controlas.",
     dolores:["Sabes hacer muchas cosas y no cobras por ninguna.","Dependes de un sueldo que no controlas."],
     puente:"Una habilidad bien elegida vale más que diez a medias.",
     dentro:["Elegir una habilidad","Volverte bueno en ella","Convertirla en ingresos"],
@@ -687,8 +700,83 @@ function viewService(key){
     <div>${s.faq.map(([q,a])=>`<details class="faq"><summary>${q}</summary><p>${a}</p></details>`).join("")}</div>
   </div></section></div>`;
 }
+/* ---------- página corta de ebook: texto que vende, calificaciones y combos ---------- */
+const STAR=`<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17.2l-5.7 3.1 1.2-6.4-4.7-4.4 6.4-.8z"/></svg>`;
+const stars=(n,cls="")=>`<span class="stars ${cls}" aria-label="${n.toFixed(1)} de 5 estrellas">${[1,2,3,4,5].map(i=>`<i class="${i<=Math.round(n)?"on":""}">${STAR}</i>`).join("")}</span>`;
+function califs(p){const l=(CONFIG.calificaciones||{})[p.id]||[];return {l,n:l.length,avg:l.length?l.reduce((s,x)=>s+x.estrellas,0)/l.length:0}}
+function comboPct(n){const d=CONFIG.combos.descuentos;let pct=0;Object.keys(d).map(Number).sort((a,b)=>a-b).forEach(k=>{if(n>=k) pct=d[k]});return pct}
+function comboCalc(ids){
+  const ps=ids.map(id=>PRODUCTS.find(p=>p.id===id)).filter(Boolean), base=ps.reduce((s,p)=>s+p.precio,0), pct=comboPct(ps.length);
+  return {ps,base,pct,total:Math.round(base*(100-pct))/100};
+}
+function comboItem(sel){
+  if(!sel||!sel.startsWith("combo:")) return null;
+  const c=comboCalc(sel.slice(6).split("+")); if(c.ps.length<2) return null;
+  return {id:sel,ref:"COMBO",nombre:"Combo: "+c.ps.map(p=>p.titulo).join(" + "),tipo:`Combo · ${c.pct}% de descuento`,precio:c.total,per:""};
+}
+function viewEbook(p){
+  const g=PAG[p.id]||{}, c=califs(p);
+  const pool=PRODUCTS.filter(x=>x.id!==p.id&&x.tipo!=="programa").sort((a,b)=>(a.pronto?1:0)-(b.pronto?1:0)||byBadge(a,b));
+  const opts=[...pool.filter(x=>x.tipo==="ebook").slice(0,3),...pool.filter(x=>x.tipo!=="ebook").slice(0,3)];
+  const d=CONFIG.combos.descuentos, tiers=Object.keys(d).map(Number).sort((a,b)=>a-b);
+  const cta=`<button class="btn" data-buy="${p.id}">${p.pronto?"Reservar en preventa":"Comprar ahora"}</button>`;
+  return `<div class="page pd eb"><section class="pd-top"><div class="wrap pd-top-grid">
+    <div class="stack" style="gap:18px">
+      <a class="svc-back" href="#academia"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>Academia</a>
+      <div class="pd-tags"><span class="kind">${TIPO_LABEL[p.tipo]}</span>${rzBadge(p)}</div>
+      <h1 class="big page-title">${esc(p.titulo)}</h1>
+      <a class="eb-rate" href="#calificaciones" data-scroll="calificaciones">${c.n?`${stars(c.avg)}<b>${c.avg.toFixed(1)}</b><span>(${c.n} ${c.n===1?"calificación":"calificaciones"})</span>`:`${stars(0,"off")}<span>Aún sin calificaciones</span>`}</a>
+      ${g.gancho?`<p class="svc-hook">${g.gancho}</p>`:""}
+      <p class="eb-copy">${g.venta||esc(p.desc)}</p>
+      ${g.dentro?`<ul class="eb-list">${g.dentro.map(x=>`<li>${CHECK}<span>${x}</span></li>`).join("")}</ul>`:""}
+      <div class="pd-buy"><div class="pd-price">${money(p.precio)}<small>USD · ${p.pronto?"preventa":"pago único"}</small></div><div class="row">${cta}</div></div>
+      <p class="muted" style="font-size:.88rem">${p.pronto?"Reservas hoy al precio de preventa y te llega a tu correo el día que sale.":"Lo recibes en tu correo apenas se confirma el pago y queda en tu área de estudiantes."}</p>
+    </div>
+    <div class="pd-cover rz-${rz(p)}" aria-hidden="true">
+      <div class="pd-cover-k">${TIPO_LABEL[p.tipo]}</div>${SVGP("♝")}
+      <div class="stack" style="gap:14px"><div class="pd-cover-t">${esc(p.titulo)}</div>
+        <div class="pd-cover-b"><span>Un Estratega Digital</span><span>${esc(p.dur)}</span></div></div>
+    </div>
+  </div></section>
+  <section class="band alt"><div class="wrap stack" style="gap:24px">
+    <div class="stack" style="gap:10px"><span class="eyebrow">Combos</span><h2 class="big" style="font-size:clamp(2.2rem,4.6vw,3.6rem)">Llévalo en <span class="red">combo</span></h2>
+      <p class="muted">${tiers.map((k,i)=>`${k}${i===tiers.length-1?" o más":""} productos: ${d[k]}% menos`).join(" · ")}</p></div>
+    <form class="eb-combo" id="ebCombo" data-base="${p.id}">
+      <ul class="eb-opts">
+        <li><label class="eb-opt fixed"><input type="checkbox" checked disabled><span class="t"><b>${esc(p.titulo)}</b><small>${TIPO_LABEL[p.tipo]}</small></span><span class="mono">${money(p.precio)}</span></label></li>
+        ${opts.map((x,i)=>`<li><label class="eb-opt"><input type="checkbox" name="cb" value="${x.id}" ${i===0?"checked":""}><span class="t"><b>${esc(x.titulo)}</b><small>${TIPO_LABEL[x.tipo]}${x.pronto?" · preventa":""}</small></span><span class="mono">${money(x.precio)}</span></label></li>`).join("")}
+      </ul>
+      <div class="eb-total"><div class="stack" style="gap:4px"><span class="muted" id="ebCount"></span><div class="eb-price"><s id="ebBase"></s><b id="ebTotal"></b></div><span class="eb-save" id="ebSave"></span></div>
+        <button class="btn" type="submit">Comprar el combo</button></div>
+    </form>
+  </div></section>
+  <section class="band" id="calificaciones"><div class="wrap stack" style="gap:24px">
+    <h2 class="big" style="font-size:clamp(2.2rem,4.6vw,3.6rem)">Califica<span class="red">ciones</span></h2>
+    ${c.n?`<div class="eb-avg"><b>${c.avg.toFixed(1)}</b>${stars(c.avg)}<span class="muted">${c.n} ${c.n===1?"calificación":"calificaciones"}</span></div>
+      <div class="eb-revs">${c.l.map(x=>`<article class="eb-rev">${stars(x.estrellas)}${x.texto?`<p>${esc(x.texto)}</p>`:""}<span class="muted">${esc(x.nombre)}</span></article>`).join("")}</div>`
+      :`<p class="muted">Aún no tiene calificaciones. Quienes lo compran lo califican desde su área de estudiantes.</p>`}
+    ${g.faq?`<div>${g.faq.map(([q,a])=>`<details class="faq"><summary>${q}</summary><p>${a}</p></details>`).join("")}</div>`:""}
+  </div></section></div>`;
+}
+function mountCombo(){
+  const f=$("#ebCombo"); if(!f) return;
+  const ids=()=>[f.dataset.base,...$$("input[name=cb]:checked",f).map(i=>i.value)];
+  const upd=()=>{const c=comboCalc(ids());
+    $("#ebCount").textContent=`${c.ps.length} productos`;
+    $("#ebBase").textContent=c.pct?money(c.base,2):""; $("#ebTotal").textContent=money(c.total,2)+" USD";
+    const nxt=Object.keys(CONFIG.combos.descuentos).map(Number).sort((a,b)=>a-b).find(k=>k>c.ps.length);
+    $("#ebSave").textContent=c.pct?`Ahorras ${money(c.base-c.total,2)} (${c.pct}%)`:"";
+    if(nxt&&c.pct) $("#ebSave").textContent+=` · con ${nxt} productos llegas a ${CONFIG.combos.descuentos[nxt]}%`;
+    if(!c.pct) $("#ebSave").textContent="Suma otro producto para activar el descuento";
+    f.querySelector("button[type=submit]").disabled=c.ps.length<2};
+  f.addEventListener("change",upd);
+  f.addEventListener("submit",e=>{e.preventDefault();const s=ids();if(s.length<2) return;
+    try{sessionStorage.setItem("ed_item","combo:"+s.join("+"))}catch(x){} location.hash="checkout"});
+  upd();
+}
 function viewProduct(id){
   const p=PRODUCTS.find(x=>x.id===id), g=PAG[id]||{}, r=rz(p), este=TIPO_ESTE[p.tipo];
+  if(p.tipo==="ebook") return viewEbook(p);
   const PZ={curso:"♞",programa:"♛",ebook:"♝",kit:"♜"}[p.tipo]||"♟";
   const cta=(cls="")=>`<button class="btn ${cls}" data-buy="${p.id}">${p.pronto?"Reservar en preventa":"Comprar ahora"}</button>`;
   const precio=`<div class="pd-price">${money(p.precio)}<small>USD · ${p.pronto?"preventa":"pago único"}</small></div>`;
@@ -773,6 +861,7 @@ function viewProduct(id){
   </div></div></div>`;
 }
 function mountProduct(){
+  mountCombo();
   const bar=$("#pdBar"), top=$(".pd-top"), fin=$("#pdFin"); if(!bar) return;
   document.body.classList.add("has-bar");
   const on=()=>{ if(!bar.isConnected){removeEventListener("scroll",on);return}
@@ -860,9 +949,9 @@ function viewPlataformas(){
 /* ---------- checkout ---------- */
 function viewCheckout(){
   const items=allItems(); let sel=null; try{sel=sessionStorage.getItem("ed_item")}catch(e){}
-  const it=items[sel];
+  const it=items[sel]||comboItem(sel);
   if(!it) return `<div class="page"><section class="band"><div class="wrap stack" style="gap:20px"><span class="eyebrow">Pago</span><h1 class="big page-title">Elige qué comprar</h1><p class="muted lede">No hay ningún producto seleccionado.</p><div class="row"><a class="btn" href="#academia">Ver la academia</a><a class="btn ghost" href="#servicios">Ver servicios</a></div></div></section></div>`;
-  const ref="ED-"+it.id.toUpperCase()+"-"+Math.random().toString(36).slice(2,6).toUpperCase();
+  const ref="ED-"+(it.ref||it.id).toUpperCase()+"-"+Math.random().toString(36).slice(2,6).toUpperCase();
   return `<div class="page"><section class="band"><div class="wrap split" style="grid-template-columns:minmax(0,1.3fr) minmax(0,1fr)">
     <form class="stack" id="payForm" style="gap:24px" novalidate data-item="${it.id}" data-ref="${ref}">
       <div class="stack" style="gap:10px"><span class="eyebrow">Pago seguro</span><h1 class="big" style="font-size:clamp(2.6rem,6vw,4.6rem)">Completa tu compra</h1></div>
@@ -891,7 +980,7 @@ function viewCheckout(){
 }
 function mountCheckout(){
   const form=$("#payForm"); if(!form) return;
-  const it=allItems()[form.dataset.item], ref=form.dataset.ref, panel=$("#pmPanel"), err=$("#payErr");
+  const it=allItems()[form.dataset.item]||comboItem(form.dataset.item), ref=form.dataset.ref, panel=$("#pmPanel"), err=$("#payErr");
   const valid=()=>{const n=$("#cName").value.trim(),e=$("#cEmail").value.trim();
     if(!n){err.textContent="Escribe tu nombre para continuar.";err.hidden=false;return false}
     if(!/^\S+@\S+\.\S+$/.test(e)){err.textContent="Revisa tu correo: debe tener el formato nombre@dominio.com.";err.hidden=false;return false}
@@ -925,8 +1014,23 @@ function mountCheckout(){
 }
 
 /* ---------- estudiantes (demostración local) ---------- */
+const PZ_TIPO={curso:"♞",programa:"♛",ebook:"♝",kit:"♜"};
+const CHECK=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>`;
+const BACK=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>`;
+function stCover(p){return `<div class="st-cover rz-${rz(p)}" aria-hidden="true">${SVGP(PZ_TIPO[p.tipo]||"♟")}<span>${TIPO_LABEL[p.tipo]}</span></div>`}
+function stState(){
+  const prog=store.get("ed_progress",{});
+  const done=p=>p.lecciones?p.lecciones.filter((_,i)=>prog[p.id+"-"+i]).length:0;
+  const pct=p=>p.lecciones?Math.round(done(p)/p.lecciones.length*100):0;
+  const next=p=>{const i=p.lecciones.findIndex((_,k)=>!prog[p.id+"-"+k]);return i<0?p.lecciones.length-1:i};
+  return {prog,done,pct,next};
+}
+const stOwned=()=>CONFIG.estudiantes.demo.map(id=>PRODUCTS.find(p=>p.id===id)).filter(Boolean);
+const lsName=t=>t.replace(/^Semana \d+:\s*/,"");
+function stCta(p,s){const d=s.done(p);return d===0?"Empezar":d===p.lecciones.length?"Repasar":"Continuar"}
 function viewEstudiantes(){
   const u=store.get("ed_user",null);
+  const wa="https://wa.me/"+CONFIG.contacto.whatsapp.replace(/\D/g,"")+"?text="+encodeURIComponent("Hola, no puedo entrar a mi área de estudiantes.");
   if(!u) return `<div class="page"><section class="band"><div class="wrap split">
       <div class="stack" style="gap:14px"><span class="eyebrow">Área de estudiantes</span><h1 class="big page-title">Tu <span class="red">tablero</span></h1><p class="lede muted">Entra para ver tus cursos, programas y ebooks, retomar donde lo dejaste y usar el analizador de Meta Ads.</p>
         <p class="notice">Versión de demostración: el acceso se guarda solo en este navegador. Puedes entrar con cualquier correo para ver cómo funciona.</p></div>
@@ -936,27 +1040,73 @@ function viewEstudiantes(){
         <label class="f">Contraseña<input type="password" id="lPass" autocomplete="current-password" required></label>
         <p class="err" id="lErr" hidden></p>
         <div><button class="btn" type="submit">Entrar</button></div>
-        <p class="muted" style="font-size:.88rem">¿Aún no tienes acceso? <a href="#academia">Elige un curso</a>.</p>
+        <p class="muted" style="font-size:.88rem">¿Olvidaste tu contraseña? <a href="${wa}" target="_blank" rel="noopener">Escríbeme al WhatsApp</a>.<br>¿Aún no tienes acceso? <a href="#academia">Elige un curso</a>.</p>
       </form>
     </div></section></div>`;
-  const owned=["c1","p1","e1"].map(id=>PRODUCTS.find(p=>p.id===id));
-  const prog=store.get("ed_progress",{}), open=store.get("ed_open","c1");
-  const pct=p=>p.lecciones?Math.round(p.lecciones.filter((_,i)=>prog[p.id+"-"+i]).length/p.lecciones.length*100):0;
-  const cur=owned.find(p=>p.id===open)||owned[0];
-  return `<div class="page"><section class="band"><div class="wrap stack" style="gap:32px">
-    <div class="row" style="justify-content:space-between"><div class="stack" style="gap:8px"><span class="eyebrow">Área de estudiantes</span><h1 class="big" style="font-size:clamp(2.6rem,6vw,4.6rem)">Hola, <span class="red">${esc(u.name)}</span></h1></div>
-      <div class="row"><a class="btn" href="#analizador">Abrir el analizador</a><button class="btn ghost" id="logout">Cerrar sesión</button></div></div>
-    <div class="split" style="grid-template-columns:minmax(0,1fr) minmax(0,1.4fr)">
-      <div class="stack" style="gap:12px"><span class="eyebrow">Mis productos</span>
-        ${owned.map(p=>`<button class="card" data-open="${p.id}" style="text-align:left;cursor:pointer;font:inherit;color:inherit;${p.id===cur.id?"border-color:var(--red)":""}">
-          <span class="kind">${TIPO_LABEL[p.tipo]}</span><b>${esc(p.titulo)}</b>
-          ${p.lecciones?`<div class="course-row"><div class="prog"><i style="width:${pct(p)}%"></i></div><span class="mono" style="font-size:.8rem">${pct(p)}%</span></div>`:`<span class="muted" style="font-size:.88rem">${esc(p.dur)} · PDF</span>`}
-        </button>`).join("")}
+  const owned=stOwned(), s=stState();
+  const v=store.get("ed_view",null), vp=v&&owned.find(p=>p.id===v.p&&p.lecciones);
+  if(vp) return viewLeccion(vp,Math.min(Math.max(0,v.l|0),vp.lecciones.length-1),s);
+  const courses=owned.filter(p=>p.lecciones);
+  const total=courses.reduce((n,p)=>n+p.lecciones.length,0), hechas=courses.reduce((n,p)=>n+s.done(p),0);
+  const last=store.get("ed_last",null), cont=courses.find(p=>p.id===last)||courses.find(p=>s.pct(p)<100)||courses[0];
+  const free=CONFIG.skills.filter(k=>!k.precio).length;
+  const rec=PRODUCTS.filter(p=>!owned.includes(p)&&!p.pronto).sort(byBadge).slice(0,3);
+  const item=p=>{
+    let foot;
+    if(p.lecciones) foot=`<div class="course-row"><div class="prog"><i style="width:${s.pct(p)}%"></i></div><span class="mono" style="font-size:.8rem">${s.pct(p)}%</span></div>
+      <div class="row"><button class="btn" data-st-open="${p.id}:${s.next(p)}">${stCta(p,s)}</button><span class="muted" style="font-size:.85rem">${s.done(p)} de ${p.lecciones.length} lecciones</span></div>`;
+    else if(p.pronto) foot=`<p class="st-note">Preventa: te llega a tu correo y aparece aquí el día que sale.</p>`;
+    else{ const mine=(store.get("ed_rating",{}))[p.id]||0;
+      foot=`<div class="row">${p.pdf?`<a class="btn" href="${esc(p.pdf)}" download>Descargar PDF</a>`:`<button class="btn" disabled>PDF en preparación</button>`}<span class="muted" style="font-size:.85rem">${esc(p.dur)}</span></div>
+      <div class="st-rate"><span class="muted">${mine?"Tu calificación":"Califícalo"}</span><span class="stars">${[1,2,3,4,5].map(n=>`<button type="button" class="${n<=mine?"on":""}" data-st-rate="${p.id}:${n}" aria-label="${n} de 5 estrellas">${STAR}</button>`).join("")}</span></div>`; }
+    return `<article class="st-item rz-${rz(p)}">${stCover(p)}<div class="stack" style="gap:10px">
+      <div class="pd-tags"><span class="kind ${p.tipo==="programa"?"solid":""}">${TIPO_LABEL[p.tipo]}</span>${rzBadge(p)}</div>
+      <h3><a class="card-link" href="#p-${p.id}">${esc(p.titulo)}</a></h3>${foot}</div></article>`;
+  };
+  return `<div class="page st"><section class="band"><div class="wrap stack" style="gap:36px">
+    <div class="st-head"><div class="stack" style="gap:8px"><span class="eyebrow">Área de estudiantes</span><h1 class="big" style="font-size:clamp(2.6rem,6vw,4.6rem)">Hola, <span class="red">${esc(u.name)}</span></h1></div>
+      <button class="btn ghost" id="logout">Cerrar sesión</button></div>
+    ${cont?`<div class="st-cont">${stCover(cont)}
+      <div class="stack" style="gap:10px"><span class="st-meta">${s.done(cont)?"Continúa donde lo dejaste":"Empieza por aquí"}</span>
+        <h2>${esc(cont.titulo)}</h2>
+        <p class="muted">${cont.tipo==="programa"?"Semana":"Lección"} ${String(s.next(cont)+1).padStart(2,"0")} de ${String(cont.lecciones.length).padStart(2,"0")} · ${esc(lsName(cont.lecciones[s.next(cont)]))}</p>
+        <div class="course-row"><div class="prog"><i style="width:${s.pct(cont)}%"></i></div><span class="mono" style="font-size:.8rem">${s.pct(cont)}%</span></div></div>
+      <div class="st-cont-go"><button class="btn" data-st-open="${cont.id}:${s.next(cont)}">${stCta(cont,s)}</button></div></div>`:""}
+    <div class="st-stats">
+      <div class="st-stat"><b>${owned.length}</b><span>Productos</span></div>
+      <div class="st-stat"><b>${hechas}<small>/${total}</small></b><span>Lecciones hechas</span></div>
+      <div class="st-stat"><b>${total?Math.round(hechas/total*100):0}%</b><span>Avance total</span></div></div>
+    <div class="stack" style="gap:16px"><span class="eyebrow">Mis productos</span><div class="st-grid">${owned.map(item).join("")}</div></div>
+    <div class="stack" style="gap:16px"><span class="eyebrow">Herramientas incluidas</span><div class="st-grid">
+      <a class="st-tool" href="#analizador"><span class="kind solid">Herramienta</span><h3>Analizador de Meta Ads</h3><p class="muted">Sube el reporte de tus campañas y recibe un veredicto por cada una.</p><span class="st-go">Abrir el analizador</span></a>
+      <a class="st-tool" href="#plataformas"><span class="kind">Biblioteca</span><h3>Skills para tu IA</h3><p class="muted">${free} skills incluidas para estudiantes, listas para cargar en tu IA.</p><span class="st-go">Ver las skills</span></a>
+    </div></div>
+  </div></section>
+  ${rec.length?`<section class="band alt"><div class="wrap stack" style="gap:28px">
+    <h2 class="big" style="font-size:clamp(2.4rem,5vw,4rem)">Tu siguiente <span class="red">jugada</span></h2>
+    <div class="grid3">${rec.map(productCard).join("")}</div></div></section>`:""}</div>`;
+}
+function viewLeccion(p,i,s){
+  const n=p.lecciones.length, lbl=p.tipo==="programa"?"Semana":"Lección", ok=!!s.prog[p.id+"-"+i];
+  const vid=p.videos&&p.videos[i];
+  return `<div class="page st"><section class="band"><div class="wrap stack" style="gap:24px">
+    <a class="svc-back" href="#estudiantes" data-st-back>${BACK}Mi tablero</a>
+    <div class="st-lesson">
+      <div class="stack" style="gap:20px">
+        <div class="st-player">${vid?`<video src="${esc(vid)}" controls playsinline preload="metadata"></video>`:`${SVGP(PZ_TIPO[p.tipo]||"♟")}<span>Video de la lección</span>`}</div>
+        <div class="stack" style="gap:8px"><span class="st-meta">${esc(p.titulo)} · ${lbl} ${String(i+1).padStart(2,"0")} de ${String(n).padStart(2,"0")}</span>
+          <h1 class="big st-title">${esc(lsName(p.lecciones[i]))}</h1></div>
+        <div class="row">
+          <button class="btn ${ok?"ghost":""}" data-st-done="${p.id}:${i}">${ok?CHECK+" Completada":"Marcar como completada"}</button>
+          ${i<n-1?`<button class="btn ${ok?"":"ghost"}" data-st-next="${p.id}:${i}">Siguiente ${lbl.toLowerCase()}</button>`:`<a class="btn ghost" href="#estudiantes" data-st-back>Volver al tablero</a>`}
+        </div>
       </div>
-      <div class="card" style="padding:28px">
-        <span class="kind solid">${TIPO_LABEL[cur.tipo]}</span><h2 class="big" style="font-size:2.4rem">${esc(cur.titulo)}</h2><p class="muted">${esc(cur.desc)}</p>
-        ${cur.lecciones?`<ul class="lessons">${cur.lecciones.map((l,i)=>`<li><input type="checkbox" id="ls-${cur.id}-${i}" data-lesson="${cur.id}-${i}" ${prog[cur.id+"-"+i]?"checked":""}><label for="ls-${cur.id}-${i}">${esc(l)}</label></li>`).join("")}</ul>`:`<p class="notice">Tu ebook está listo. En la versión final aquí aparece el botón para descargar el PDF.</p>`}
-      </div>
+      <aside class="st-side">
+        <b>${esc(p.titulo)}</b>
+        <div class="course-row" style="margin-top:10px"><div class="prog"><i style="width:${s.pct(p)}%"></i></div><span class="mono" style="font-size:.8rem">${s.pct(p)}%</span></div>
+        <ol class="st-list">${p.lecciones.map((l,k)=>`<li><button class="${k===i?"on":""}" data-st-open="${p.id}:${k}" ${k===i?'aria-current="step"':""}>
+          <span class="st-check ${s.prog[p.id+"-"+k]?"ok":""}">${s.prog[p.id+"-"+k]?CHECK:""}</span><span>${esc(lsName(l))}</span></button></li>`).join("")}</ol>
+      </aside>
     </div>
   </div></section></div>`;
 }
@@ -966,9 +1116,14 @@ function mountEstudiantes(){
     if(!/^\S+@\S+\.\S+$/.test(em)){er.textContent="Escribe un correo válido, por ejemplo nombre@gmail.com.";er.hidden=false;return}
     if(pw.length<4){er.textContent="La contraseña debe tener al menos 4 caracteres.";er.hidden=false;return}
     const n=em.split("@")[0]; store.set("ed_user",{email:em,name:n.charAt(0).toUpperCase()+n.slice(1)}); route();});
-  const lo=$("#logout"); if(lo) lo.addEventListener("click",()=>{store.del("ed_user");route()});
-  $$("[data-open]").forEach(b=>b.addEventListener("click",()=>{store.set("ed_open",b.dataset.open);route(false)}));
-  $$("[data-lesson]").forEach(c=>c.addEventListener("change",()=>{const p=store.get("ed_progress",{});p[c.dataset.lesson]=c.checked;store.set("ed_progress",p);route(false)}));
+  const lo=$("#logout"); if(lo) lo.addEventListener("click",()=>{store.del("ed_user");store.del("ed_view");route()});
+  const pick=v=>{const [id,l]=v.split(":");return {p:id,l:+l}};
+  const setLesson=(id,l,done)=>{const pr=store.get("ed_progress",{});pr[id+"-"+l]=done;store.set("ed_progress",pr)};
+  $$("[data-st-open]").forEach(b=>b.addEventListener("click",()=>{const v=pick(b.dataset.stOpen);store.set("ed_view",v);store.set("ed_last",v.p);route()}));
+  $$("[data-st-back]").forEach(a=>a.addEventListener("click",e=>{e.preventDefault();store.del("ed_view");route()}));
+  $$("[data-st-done]").forEach(b=>b.addEventListener("click",()=>{const v=pick(b.dataset.stDone),pr=store.get("ed_progress",{});setLesson(v.p,v.l,!pr[v.p+"-"+v.l]);route(false)}));
+  $$("[data-st-rate]").forEach(b=>b.addEventListener("click",()=>{const [id,n]=b.dataset.stRate.split(":"),r=store.get("ed_rating",{});r[id]=+n;store.set("ed_rating",r);toast("Gracias por calificarlo");route(false)}));
+  $$("[data-st-next]").forEach(b=>b.addEventListener("click",()=>{const v=pick(b.dataset.stNext);setLesson(v.p,v.l,true);store.set("ed_view",{p:v.p,l:v.l+1});route()}));
 }
 
 /* ---------- analizador Meta Ads (exclusivo) ---------- */
@@ -1194,3 +1349,7 @@ document.addEventListener("click",e=>{
 });
 $("#menuBtn").addEventListener("click",()=>{const n=$("#mainNav");n.classList.toggle("open");$("#menuBtn").setAttribute("aria-expanded",n.classList.contains("open"))});
 addEventListener("hashchange",()=>route());
+$("#yr").textContent=new Date().getFullYear();
+$("#footContact").textContent="WhatsApp "+CONFIG.contacto.whatsapp;
+grain(); cursor(); initLenis();
+route(false);
