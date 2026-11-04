@@ -643,6 +643,38 @@ td.bad{color:var(--bad);font-weight:600} td.warn{color:var(--warn);font-weight:6
 .esc-key{display:inline-grid;place-items:center;font-family:var(--f-body);font-weight:600;font-size:clamp(1.4rem,3vw,2.2rem);width:2.9em;height:2.3em;border-radius:10px;background:var(--bone);color:var(--ink);box-shadow:0 6px 0 #9b9893,0 14px 30px rgba(0,0,0,.6);vertical-align:middle;transition:transform .12s,box-shadow .12s;cursor:pointer;border:0}
 .esc-key:active{transform:translateY(5px);box-shadow:0 1px 0 #9b9893,0 6px 16px rgba(0,0,0,.6)}
 
+/* Portafolio */
+.pf-hero{display:grid;grid-template-columns:minmax(0,320px) minmax(0,1fr);gap:48px;align-items:center}
+.pf-photo{aspect-ratio:4/5;border:1px solid var(--line);border-radius:var(--r);background:radial-gradient(circle at 50% 35%,rgba(215,38,30,.22),transparent 65%),var(--char);display:grid;place-items:center;overflow:hidden}
+.pf-photo img{width:100%;height:100%;object-fit:cover}
+.pf-photo .glyph svg{width:120px;height:120px;fill:var(--bone)}
+.pf-rol{font-family:var(--f-display);text-transform:uppercase;font-size:clamp(1.3rem,3vw,1.9rem);line-height:1.05;color:var(--red-text)}
+.pf-h2{font-size:clamp(2.6rem,7vw,5rem)}
+.pf-cifras{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin-top:48px}
+.pf-cifras div{background:var(--char);padding:22px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.pf-cifras b{font-family:var(--f-display);font-weight:400;font-size:clamp(2.4rem,6vw,3.6rem);line-height:1;color:var(--red-text)}
+.pf-cifras span{color:var(--ash);font-size:.95rem}
+.pf-case{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:32px;padding:28px;border:1px solid var(--line);border-radius:var(--r);background:var(--ink)}
+.pf-case h3{font-family:var(--f-display);text-transform:uppercase;font-size:clamp(2rem,5vw,3rem);line-height:1}
+.pf-datos{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.pf-datos div{background:var(--char);padding:14px;display:flex;flex-direction:column;gap:4px;min-width:0}
+.pf-datos span{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ash)}
+.pf-datos b{font-family:var(--f-display);font-weight:400;font-size:1.8rem;line-height:1}
+.pf-shots{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;align-content:start}
+.pf-shot{display:block;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--char)}
+.pf-shot img{display:block;width:100%;height:auto;transition:transform .3s}
+.pf-shot:hover img{transform:scale(1.03)}
+.pf-empty{display:grid;place-items:center;min-height:160px;width:100%;height:100%;border:1px dashed #3a3836;border-radius:var(--r);color:var(--ash);font-size:.88rem;text-align:center;padding:16px;grid-column:1/-1}
+.pf-works{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px}
+.pf-work{display:flex;flex-direction:column;gap:14px;min-width:0}
+.pf-work h3{font-family:var(--f-display);text-transform:uppercase;font-size:1.6rem;line-height:1}
+.pf-media{aspect-ratio:16/10;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--char);display:grid;place-items:center}
+.pf-work.vert{max-width:300px}.pf-work.vert .pf-media{aspect-ratio:9/16}
+.pf-media video,.pf-media img{width:100%;height:100%;object-fit:cover;display:block}
+.pf-media .pf-empty{border:0;min-height:0}
+.pf-skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+@media (max-width:860px){.pf-hero,.pf-case{grid-template-columns:1fr;gap:28px}.pf-photo{width:min(180px,50vw)}.pf-photo .glyph svg{width:72px;height:72px}.pf-case{padding:20px}}
+
 footer{background:var(--ink);border-top:1px solid var(--line);padding-block:56px 40px}
 footer .cols{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:32px}
 @media (max-width:800px){footer .cols{grid-template-columns:1fr 1fr}}

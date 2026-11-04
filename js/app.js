@@ -40,7 +40,41 @@ const CONFIG = {
   // Descuento del combo según cuántos productos lleva (2, 3, 4 o más)
   combos: { descuentos: { 2:10, 3:15, 4:20 } },
   // Calificaciones reales de cada producto: { e1:[{nombre:"Ana", estrellas:5, texto:"..."}] }. Vacío = "Aún sin calificaciones".
-  calificaciones: {}
+  calificaciones: {},
+  // Portafolio (#portafolio): quién soy, resultados y trabajos. Solo datos reales. Un campo vacío no se muestra.
+  // Las capturas y videos van en assets/portafolio/ (ej. "assets/portafolio/directv-1.jpg"). Tapa los datos privados antes de subirlas.
+  portafolio: {
+    nombre: "Leo",
+    rol: "Trafficker digital y creador de contenido con IA",
+    foto: "",            // ej. "assets/portafolio/leo.jpg". Vacío = se muestra el caballo de la marca
+    bio: "Manejo campañas de Meta Ads, creo reels que venden y construyo páginas web con inteligencia artificial. Trabajo con marcas que quieren vender más con un plan claro, no con anuncios al azar.",
+    ubicacion: "",       // ej. "Quito, Ecuador · trabajo remoto"
+    cv: "",              // enlace a tu hoja de vida en PDF
+    linkedin: "",
+    // Cifras de arriba. Solo las que puedas demostrar con una captura.
+    cifras: [
+      { valor: "+50 mil", texto: "en pauta de Meta Ads manejada en campañas de DirecTV" }
+    ],
+    // Casos con resultados. datos: [["Etiqueta","Valor"]]. capturas: rutas de imágenes de Meta Ads.
+    casos: [
+      { cliente: "DirecTV", rubro: "Televisión e internet", rol: "Trafficker digital",
+        resumen: "Campañas de Meta Ads para conseguir clientes de los planes de DirecTV.",
+        datos: [["Pauta manejada","+50 mil"],["Resultados",""],["Costo por resultado",""],["Periodo",""]],
+        capturas: [] }
+    ],
+    // Trabajos. tipo: "reel", "web" o "anuncio". video o imagen: ruta en assets/portafolio/. url: enlace para verlo.
+    trabajos: [
+      { tipo: "reel", titulo: "Reels para Eicon", cliente: "Eicon", texto: "", video: "", imagen: "", url: "" },
+      { tipo: "web", titulo: "unestrategadigital", cliente: "Marca propia", texto: "Esta web: servicios, academia, área de estudiantes, analizador de Meta Ads y pagos.", video: "", imagen: "", url: "#inicio" }
+    ],
+    // Lo que sé hacer
+    habilidades: [
+      { area: "Publicidad", items: ["Campañas de Meta Ads de principio a fin","Lectura de métricas y decisiones de pausar o escalar","Sistema ADP: anuncios que siguen vendiendo meses"] },
+      { area: "Contenido", items: ["Guiones y ganchos para reels","Reels y anuncios en video","Avatares y videos con IA"] },
+      { area: "Web y apps", items: ["Páginas web y landings","Aplicaciones construidas con IA"] }
+    ],
+    herramientas: ["Administrador de anuncios de Meta","Claude"]
+  }
 };
 
 const SERVICES = {
@@ -1320,7 +1354,75 @@ function initLenis(){
 }
 
 /* ---------- router ---------- */
-const ROUTES={inicio:viewHome,servicios:viewServicios,academia:viewAcademia,plataformas:viewPlataformas,checkout:viewCheckout,estudiantes:viewEstudiantes,analizador:viewAnalizador};
+/* ---------- portafolio: quién soy, resultados y trabajos ---------- */
+const PF_TIPO={reel:"Reel",web:"Página web",anuncio:"Anuncio"};
+function pfShot(src,alt){return `<a class="pf-shot" href="${esc(src)}" target="_blank" rel="noopener"><img src="${esc(src)}" alt="${esc(alt)}" loading="lazy" decoding="async"></a>`}
+function pfTrabajo(t){
+  const vert=t.tipo==="reel";
+  const media=t.video?`<video src="${esc(t.video)}" controls playsinline preload="metadata"${t.imagen?` poster="${esc(t.imagen)}"`:""}></video>`
+    :t.imagen?`<img src="${esc(t.imagen)}" alt="${esc(t.titulo)}" loading="lazy" decoding="async">`
+    :`<span class="pf-empty">${t.tipo==="reel"?"Video por agregar":"Imagen por agregar"}</span>`;
+  const ext=t.url&&!t.url.startsWith("#");
+  return `<article class="pf-work${vert?" vert":""}"><div class="pf-media">${media}</div>
+    <div class="stack" style="gap:8px"><span class="kind">${PF_TIPO[t.tipo]||esc(t.tipo)}${t.cliente?` · ${esc(t.cliente)}`:""}</span>
+      <h3>${esc(t.titulo)}</h3>${t.texto?`<p class="muted">${esc(t.texto)}</p>`:""}
+      ${t.url?`<a class="st-go" href="${esc(t.url)}"${ext?` target="_blank" rel="noopener"`:""}>${t.tipo==="web"?"Ver la web":"Verlo completo"}</a>`:""}</div></article>`;
+}
+function viewPortafolio(){
+  const P=CONFIG.portafolio, c=CONFIG.contacto;
+  const wa="https://wa.me/"+c.whatsapp.replace(/\D/g,"")+"?text="+encodeURIComponent("Hola Leo, vi tu portafolio y quiero hablar de un proyecto.");
+  const link=location.href.split("#")[0]+"#portafolio";
+  const cifras=P.cifras.filter(x=>x.valor);
+  const grupos=Object.keys(PF_TIPO).map(k=>[k,P.trabajos.filter(t=>t.tipo===k)]).filter(([,l])=>l.length);
+  return `<div class="page pf">
+    <section class="band"><div class="wrap pf-hero">
+      <div class="pf-photo">${P.foto?`<img src="${esc(P.foto)}" alt="${esc(P.nombre)}">`:`<span class="glyph">${SVGP("♞")}</span>`}</div>
+      <div class="stack" style="gap:18px">
+        <span class="st-meta">Portafolio${P.ubicacion?` · ${esc(P.ubicacion)}`:""}</span>
+        <h1 class="big page-title">${esc(P.nombre)}</h1>
+        <p class="pf-rol">${esc(P.rol)}</p>
+        <p class="lede muted">${esc(P.bio)}</p>
+        <div class="row"><a class="btn" href="${wa}" target="_blank" rel="noopener">Escríbeme por WhatsApp</a>
+          ${P.cv?`<a class="btn ghost" href="${esc(P.cv)}" target="_blank" rel="noopener">Ver mi hoja de vida</a>`:""}
+          <button class="btn ghost" data-copy="${esc(link)}">Copiar enlace del portafolio</button></div>
+        ${P.linkedin?`<a class="st-go" href="${esc(P.linkedin)}" target="_blank" rel="noopener">Ver mi LinkedIn</a>`:""}
+      </div>
+    </div>
+    ${cifras.length?`<div class="wrap"><div class="pf-cifras">${cifras.map(x=>`<div><b>${esc(x.valor)}</b><span>${esc(x.texto)}</span></div>`).join("")}</div></div>`:""}
+    </section>
+
+    ${P.casos.length?`<section class="band alt"><div class="wrap stack" style="gap:32px">
+      <h2 class="big pf-h2">Resultados</h2>
+      ${P.casos.map(k=>{const d=k.datos.filter(([,v])=>v);return `<article class="pf-case">
+        <div class="stack" style="gap:12px">
+          <span class="kind solid">${esc(k.rol)}</span>
+          <h3>${esc(k.cliente)}</h3>${k.rubro?`<span class="muted">${esc(k.rubro)}</span>`:""}
+          <p>${esc(k.resumen)}</p>
+          ${d.length?`<div class="pf-datos">${d.map(([l,v])=>`<div><span>${esc(l)}</span><b>${esc(v)}</b></div>`).join("")}</div>`:""}
+        </div>
+        <div class="pf-shots">${k.capturas.length?k.capturas.map((s,i)=>pfShot(s,"Captura de Meta Ads "+(i+1)+" de "+k.cliente)).join(""):`<span class="pf-empty">Capturas de Meta Ads por agregar</span>`}</div>
+      </article>`}).join("")}
+    </div></section>`:""}
+
+    ${grupos.length?`<section class="band"><div class="wrap stack" style="gap:32px">
+      <h2 class="big pf-h2">Trabajos</h2>
+      ${grupos.map(([k,l])=>`<div class="stack" style="gap:16px"><span class="st-meta">${PF_TIPO[k]}${l.length>1?"s":""}</span><div class="pf-works">${l.map(pfTrabajo).join("")}</div></div>`).join("")}
+    </div></section>`:""}
+
+    <section class="band alt"><div class="wrap stack" style="gap:32px">
+      <h2 class="big pf-h2">Lo que sé hacer</h2>
+      <div class="pf-skills">${P.habilidades.map(h=>`<div class="card"><h3>${esc(h.area)}</h3><ul class="checks">${h.items.map(i=>`<li>${esc(i)}</li>`).join("")}</ul></div>`).join("")}</div>
+      ${P.herramientas.length?`<div class="stack" style="gap:12px"><span class="st-meta">Herramientas</span><div class="paybadges">${P.herramientas.map(h=>`<span>${esc(h)}</span>`).join("")}</div></div>`:""}
+    </div></section>
+
+    <section class="band"><div class="wrap stack" style="gap:20px">
+      <h2 class="big pf-h2">¿Tienes un proyecto <span class="red">o una vacante?</span></h2>
+      <p class="lede muted">Trabajo por proyecto, por mes o dentro de tu equipo. Cuéntame qué necesitas y te respondo con una propuesta.</p>
+      <div class="row"><a class="btn" href="${wa}" target="_blank" rel="noopener">Escríbeme por WhatsApp</a><a class="btn ghost" href="mailto:${esc(c.email)}">${esc(c.email)}</a><a class="btn ghost" href="#servicios">Ver mis servicios</a></div>
+    </div></section>
+  </div>`;
+}
+const ROUTES={portafolio:viewPortafolio,inicio:viewHome,servicios:viewServicios,academia:viewAcademia,plataformas:viewPlataformas,checkout:viewCheckout,estudiantes:viewEstudiantes,analizador:viewAnalizador};
 function route(scrollTop=true){
   let r=(location.hash||"#inicio").slice(1); if(r==="avatar-ia") r="contenido"; // el avatar IA ahora vive dentro de Contenido
   const prod=r.startsWith("p-")?PRODUCTS.find(x=>"p-"+x.id===r):null;
