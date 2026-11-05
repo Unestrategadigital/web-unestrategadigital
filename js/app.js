@@ -2,7 +2,7 @@
    CONFIGURACIÓN: edita aquí tus datos, precios y enlaces de pago
    ============================================================ */
 const CONFIG = {
-  contacto: { whatsapp: "+593 99 000 0000", email: "hola@unestrategadigital.com" },
+  contacto: { whatsapp: "+593 98 714 7507", email: "hola@unestrategadigital.com" },
   pagos: { binancePayId: "TU-PAY-ID", tarjetaGeneral: "" },
   plataformas: {
     hotmart: { nombre: "Biblioteca Estratega", url: "", texto: "Mi plataforma de contenido con plantillas, guiones y clases nuevas cada mes. Se compra y se accede por Hotmart." },
@@ -44,17 +44,34 @@ const CONFIG = {
   // Portafolio (#portafolio): quién soy, resultados y trabajos. Solo datos reales. Un campo vacío no se muestra.
   // Las capturas y videos van en assets/portafolio/ (ej. "assets/portafolio/directv-1.jpg"). Tapa los datos privados antes de subirlas.
   portafolio: {
-    nombre: "Leo",
-    rol: "Trafficker digital y creador de contenido con IA",
+    nombre: "Leonel Romero",
+    rol: "Digital Growth Marketing Specialist",
     foto: "",            // ej. "assets/portafolio/leo.jpg". Vacío = se muestra el caballo de la marca
-    bio: "Manejo campañas de Meta Ads, creo reels que venden y construyo páginas web con inteligencia artificial. Trabajo con marcas que quieren vender más con un plan claro, no con anuncios al azar.",
-    ubicacion: "",       // ej. "Quito, Ecuador · trabajo remoto"
-    cv: "",              // enlace a tu hoja de vida en PDF
+    bio: "Entiendo el marketing como una herramienta para construir confianza, no para llamar la atención. Trabajo desde la estrategia, pero con los pies en la ejecución: diseño sistemas de crecimiento que conectan propósito, estructura y resultado. Mi enfoque combina pensamiento analítico, criterio creativo y una visión de negocio orientada a crecimiento sostenible.",
+    ubicacion: "Trabajo remoto",
+    cv: "assets/portafolio/cv-leonel-romero.pdf",
+    email: "hola@unestrategadigital.com",
     linkedin: "",
-    // Cifras de arriba. Solo las que puedas demostrar con una captura.
+    instagram: "https://www.instagram.com/unestrategadigital/",
+    // Cifras de arriba. Solo las que puedas demostrar.
     cifras: [
+      { valor: "+6 años", texto: "en marketing digital, desde 2020" },
+      { valor: "4 países", texto: "con clientes en Ecuador, Colombia, México y Estados Unidos" },
       { valor: "+50 mil", texto: "en pauta de Meta Ads manejada en campañas de DirecTV" }
     ],
+    // Experiencia en marketing, de la más reciente a la más antigua (sale de la hoja de vida)
+    experiencia: [
+      { rol: "Trafficker digital y consultor de marketing", empresa: "Intercampus", lugar: "", anios: "2026" },
+      { rol: "Trafficker digital y consultor de marketing", empresa: "Saraluz Event Planner", lugar: "", anios: "2025 - 2026" },
+      { rol: "Marketing strategist specialist", empresa: "Adsproject, Raizee y Auren", lugar: "México · remoto", anios: "2025 - 2026" },
+      { rol: "Marketing leader", empresa: "Oyarcegroup y RubyMed", lugar: "Estados Unidos · remoto", anios: "2024 - 2025" },
+      { rol: "Agencia y servicios freelance", empresa: "Cortinas Elegant, Studio Tattoo Arte y Studios C&E", lugar: "Cali, Colombia", anios: "2024" },
+      { rol: "Growth marketer, ventas, producción y community manager", empresa: "Autoconfort Design Studio", lugar: "Quito, Ecuador", anios: "2023" },
+      { rol: "Growth marketer, ventas, producción y community manager", empresa: "Studio Tattoo Arte", lugar: "Cali, Colombia", anios: "2022" },
+      { rol: "Equipo de marketing", empresa: "Nora Aguirre con Century 21", lugar: "Las Vegas · remoto", anios: "2021" },
+      { rol: "Servicios digitales freelance", empresa: "", lugar: "Colombia", anios: "2020" }
+    ],
+    certificaciones: ["Facebook Blueprint","Google Ads Certification","LinkedIn Marketing Solutions","Programación Neurolingüística (PNL)"],
     // Casos con resultados. datos: [["Etiqueta","Valor"]]. capturas: rutas de imágenes de Meta Ads.
     casos: [
       { cliente: "DirecTV", rubro: "Televisión e internet", rol: "Trafficker digital",
@@ -69,11 +86,13 @@ const CONFIG = {
     ],
     // Lo que sé hacer
     habilidades: [
-      { area: "Publicidad", items: ["Campañas de Meta Ads de principio a fin","Lectura de métricas y decisiones de pausar o escalar","Sistema ADP: anuncios que siguen vendiendo meses"] },
-      { area: "Contenido", items: ["Guiones y ganchos para reels","Reels y anuncios en video","Avatares y videos con IA"] },
-      { area: "Web y apps", items: ["Páginas web y landings","Aplicaciones construidas con IA"] }
+      { area: "Paid media", items: ["Campañas en Meta, TikTok y YouTube","Menos CPA y más ROAS con A/B testing, KPIs y control del presupuesto","Sistema ADP: anuncios que siguen vendiendo meses"] },
+      { area: "Funnels y automatización", items: ["Funnels de conversión B2B y B2C conectados al CRM","Captación y nurturing para mejorar la calidad del lead","Automatización con HubSpot, ActiveCampaign, Make y Zapier"] },
+      { area: "Marca y contenido", items: ["Estrategia de marca, posicionamiento y storytelling","Conceptos y contenidos para campañas 360","Dirección visual y edición de video"] },
+      { area: "Growth y datos", items: ["Optimización de conversión (CRO) y UX/UI","Growth hacking, inbound y retención","Decisiones basadas en métricas de rendimiento"] },
+      { area: "Web y apps", items: ["Páginas web en WordPress, Shopify, Webflow y Wix","Aplicaciones construidas con IA"] }
     ],
-    herramientas: ["Administrador de anuncios de Meta","Claude"]
+    herramientas: ["Meta Ads","Google Ads","TikTok Ads","YouTube Ads","LinkedIn Ads","Twitter Ads","Snapchat Ads","Pinterest Ads","Google Analytics","Meta Business Suite","Meta Pixel","Google Tag Manager","HubSpot","ActiveCampaign","Mailchimp","ManyChat","Make","Zapier","Typeform","Jotform","Notion","Trello","Asana","ClickUp","Metricool","Hootsuite","Buffer","Later","WordPress","Elementor","Shopify","Webflow","Wix","Hotjar","Figma","Canva","Premiere Pro","CapCut","Looker Studio","Ubersuggest","SEMrush","Ahrefs","SimilarWeb","Google Trends","Salesforce","Slack","ChatGPT","Claude","Midjourney","Recraft","Runway","ElevenLabs","Miro","Calendly"]
   }
 };
 
@@ -1383,9 +1402,9 @@ function viewPortafolio(){
         <p class="pf-rol">${esc(P.rol)}</p>
         <p class="lede muted">${esc(P.bio)}</p>
         <div class="row"><a class="btn" href="${wa}" target="_blank" rel="noopener">Escríbeme por WhatsApp</a>
-          ${P.cv?`<a class="btn ghost" href="${esc(P.cv)}" target="_blank" rel="noopener">Ver mi hoja de vida</a>`:""}
+          ${P.cv?`<a class="btn ghost" href="${esc(P.cv)}" target="_blank" rel="noopener">Ver mi hoja de vida (PDF)</a>`:""}
           <button class="btn ghost" data-copy="${esc(link)}">Copiar enlace del portafolio</button></div>
-        ${P.linkedin?`<a class="st-go" href="${esc(P.linkedin)}" target="_blank" rel="noopener">Ver mi LinkedIn</a>`:""}
+        ${P.linkedin||P.instagram?`<div class="row" style="gap:20px">${P.linkedin?`<a class="st-go" href="${esc(P.linkedin)}" target="_blank" rel="noopener">LinkedIn</a>`:""}${P.instagram?`<a class="st-go" href="${esc(P.instagram)}" target="_blank" rel="noopener">Instagram</a>`:""}</div>`:""}
       </div>
     </div>
     ${cifras.length?`<div class="wrap"><div class="pf-cifras">${cifras.map(x=>`<div><b>${esc(x.valor)}</b><span>${esc(x.texto)}</span></div>`).join("")}</div></div>`:""}
@@ -1404,21 +1423,27 @@ function viewPortafolio(){
       </article>`}).join("")}
     </div></section>`:""}
 
-    ${grupos.length?`<section class="band"><div class="wrap stack" style="gap:32px">
+    ${P.experiencia.length?`<section class="band"><div class="wrap stack" style="gap:32px">
+      <h2 class="big pf-h2">Experiencia</h2>
+      <ol class="pf-exp">${P.experiencia.map(x=>`<li><span class="pf-anio">${esc(x.anios)}</span><div><h3>${esc(x.rol)}</h3>${x.empresa||x.lugar?`<p class="muted">${[x.empresa,x.lugar].filter(Boolean).map(esc).join(" · ")}</p>`:""}</div></li>`).join("")}</ol>
+    </div></section>`:""}
+
+    ${grupos.length?`<section class="band alt"><div class="wrap stack" style="gap:32px">
       <h2 class="big pf-h2">Trabajos</h2>
       ${grupos.map(([k,l])=>`<div class="stack" style="gap:16px"><span class="st-meta">${PF_TIPO[k]}${l.length>1?"s":""}</span><div class="pf-works">${l.map(pfTrabajo).join("")}</div></div>`).join("")}
     </div></section>`:""}
 
-    <section class="band alt"><div class="wrap stack" style="gap:32px">
+    <section class="band"><div class="wrap stack" style="gap:32px">
       <h2 class="big pf-h2">Lo que sé hacer</h2>
       <div class="pf-skills">${P.habilidades.map(h=>`<div class="card"><h3>${esc(h.area)}</h3><ul class="checks">${h.items.map(i=>`<li>${esc(i)}</li>`).join("")}</ul></div>`).join("")}</div>
       ${P.herramientas.length?`<div class="stack" style="gap:12px"><span class="st-meta">Herramientas</span><div class="paybadges">${P.herramientas.map(h=>`<span>${esc(h)}</span>`).join("")}</div></div>`:""}
+      ${P.certificaciones.length?`<div class="stack" style="gap:12px"><span class="st-meta">Formación y certificaciones</span><ul class="checks">${P.certificaciones.map(h=>`<li>${esc(h)}</li>`).join("")}</ul></div>`:""}
     </div></section>
 
-    <section class="band"><div class="wrap stack" style="gap:20px">
+    <section class="band alt"><div class="wrap stack" style="gap:20px">
       <h2 class="big pf-h2">¿Tienes un proyecto <span class="red">o una vacante?</span></h2>
       <p class="lede muted">Trabajo por proyecto, por mes o dentro de tu equipo. Cuéntame qué necesitas y te respondo con una propuesta.</p>
-      <div class="row"><a class="btn" href="${wa}" target="_blank" rel="noopener">Escríbeme por WhatsApp</a><a class="btn ghost" href="mailto:${esc(c.email)}">${esc(c.email)}</a><a class="btn ghost" href="#servicios">Ver mis servicios</a></div>
+      <div class="row"><a class="btn" href="${wa}" target="_blank" rel="noopener">Escríbeme por WhatsApp</a><a class="btn ghost" href="mailto:${esc(P.email||c.email)}">${esc(P.email||c.email)}</a><a class="btn ghost" href="#servicios">Ver mis servicios</a></div>
     </div></section>
   </div>`;
 }

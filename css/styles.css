@@ -684,3 +684,8 @@ footer a:hover{color:var(--bone)}
 .paybadges span{font:500 .76rem var(--f-mono);border:1px solid var(--line);padding:5px 10px;border-radius:2px;color:var(--ash)}
 .toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--bone);color:var(--ink);padding:12px 18px;border-radius:999px;font-weight:600;z-index:99}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal .w{opacity:1}}
+.pf-exp{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.pf-exp li{display:grid;grid-template-columns:140px minmax(0,1fr);gap:24px;padding:20px 0;border-bottom:1px solid var(--line)}
+.pf-exp h3{font-family:var(--f-display);text-transform:uppercase;font-size:clamp(1.3rem,3vw,1.8rem);line-height:1.05}
+.pf-anio{color:var(--red-text);font-weight:600;font-size:.95rem;padding-top:4px}
+@media (max-width:600px){.pf-exp li{grid-template-columns:1fr;gap:6px}}
