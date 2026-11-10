@@ -27,4 +27,4 @@ Abre `index.html` con un servidor local, por ejemplo:
 npx serve .
 ```
 
-Librerías externas por CDN: GSAP 3.12.5, ScrollTrigger y Lenis 1.1.13. Fuentes: Anton y Schibsted Grotesk (Google Fonts).
+Librerías en `js/vendor/` (copiadas del paquete oficial de npm, sin depender de CDN): GSAP 3.12.5, ScrollTrigger y Lenis 1.1.13. Para actualizarlas, reemplaza esos archivos por los de la nueva versión. Fuentes: Anton y Schibsted Grotesk (Google Fonts).
