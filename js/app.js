@@ -1088,12 +1088,11 @@ function viewEstudiantes(){
       <div class="stack" style="gap:14px"><span class="eyebrow">Área de estudiantes</span><h1 class="big page-title">Tu <span class="red">tablero</span></h1><p class="lede muted">Entra para ver tus cursos, programas y ebooks, retomar donde lo dejaste y usar el analizador de Meta Ads.</p>
         <p class="notice">Versión de demostración: el acceso se guarda solo en este navegador. Puedes entrar con cualquier correo para ver cómo funciona.</p></div>
       <form class="card stack" id="loginForm" style="gap:16px;padding:32px;border-top:3px solid var(--red)" novalidate>
-        <h3>Iniciar sesión</h3>
+        <h3>Entrar a la demo</h3>
         <label class="f">Correo<input type="email" id="lEmail" autocomplete="email" required></label>
-        <label class="f">Contraseña<input type="password" id="lPass" autocomplete="current-password" required></label>
         <p class="err" id="lErr" hidden></p>
-        <div><button class="btn" type="submit">Entrar</button></div>
-        <p class="muted" style="font-size:.88rem">¿Olvidaste tu contraseña? <a href="${wa}" target="_blank" rel="noopener">Escríbeme al WhatsApp</a>.<br>¿Aún no tienes acceso? <a href="#academia">Elige un curso</a>.</p>
+        <div><button class="btn" type="submit">Entrar a la demo</button></div>
+        <p class="muted" style="font-size:.88rem">¿Problemas para entrar? <a href="${wa}" target="_blank" rel="noopener">Escríbeme al WhatsApp</a>.<br>¿Aún no tienes acceso? <a href="#academia">Elige un curso</a>.</p>
       </form>
     </div></section></div>`;
   const owned=stOwned(), s=stState();
@@ -1165,9 +1164,8 @@ function viewLeccion(p,i,s){
 }
 function mountEstudiantes(){
   const f=$("#loginForm");
-  if(f) f.addEventListener("submit",e=>{e.preventDefault();const em=$("#lEmail").value.trim(),pw=$("#lPass").value,er=$("#lErr");
+  if(f) f.addEventListener("submit",e=>{e.preventDefault();const em=$("#lEmail").value.trim(),er=$("#lErr");
     if(!/^\S+@\S+\.\S+$/.test(em)){er.textContent="Escribe un correo válido, por ejemplo nombre@gmail.com.";er.hidden=false;return}
-    if(pw.length<4){er.textContent="La contraseña debe tener al menos 4 caracteres.";er.hidden=false;return}
     const n=em.split("@")[0]; store.set("ed_user",{email:em,name:n.charAt(0).toUpperCase()+n.slice(1)}); route();});
   const lo=$("#logout"); if(lo) lo.addEventListener("click",()=>{store.del("ed_user");store.del("ed_view");route()});
   const pick=v=>{const [id,l]=v.split(":");return {p:id,l:+l}};
